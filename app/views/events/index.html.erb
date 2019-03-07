@@ -15,6 +15,7 @@
 			    <p class="card-text text-secondary"><%= event.price %>€</p>
 			    <p class="card-text text-secondary"><%= event.style %></p>
 			    <p class="card-text text-secondary"><%= event.category %></p>
+			    <%= link_to "Voir l'événement", event_path(event.id), class: 'btn btn-primary' %>
 			  </div>
 			</div>
 		</div>
