@@ -1,0 +1,24 @@
+<h1>Events#index</h1>
+<p>Find me in app/views/events/index.html.erb</p>
+
+<h2 class="text-center mt-5 mb-3">Liste des évenements</h2>
+
+<div class="container">
+	<div class="card-deck mb-4 mt-5 text-center">
+		<% @events.each do |event| %>
+		<div class="col-md-4">
+			<div class="card border-light bg-white rounded box-shadow mb-3" style="width: 18rem;">
+			  <div class="card-body">
+			    <h5 class="card-title mb-3"><%= event.title %></h5>
+			    <p class="card-text mt-3 text-secondary"><%= event.start_date %></p>
+			    <p class="card-text text-secondary"><%= event.location %></p>
+			    <p class="card-text text-secondary"><%= event.price %>€</p>
+			    <p class="card-text text-secondary"><%= event.style %></p>
+			    <p class="card-text text-secondary"><%= event.category %></p>
+			    <%= link_to "Voir l'événement", event_path(event.id), class: 'btn btn-primary' %>
+			  </div>
+			</div>
+		</div>
+		<% end %>
+	</div>
+</div>
