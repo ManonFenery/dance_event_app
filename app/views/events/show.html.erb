@@ -1,2 +1,38 @@
-<h1>Events#show</h1>
-<p>Find me in app/views/events/show.html.erb</p>
+<div class="mx-auto mt-3 py-3" style="width: 600px;">
+<h1>Évenement</h1>
+</div>
+
+<div class="mx-auto py-3" style="width: 600px;">
+	<table class="table">
+  		<tbody>
+	    <tr>
+	      <th scope="row">Évenement</th>
+	      <td><%= @event.title %></td>
+	    </tr>
+	    <tr>
+	      <th scope="row">Description</th>
+	      <td><%= @event.description %></td>
+	    </tr>
+	     <tr>
+	      <th scope="row">Date</th>
+	      <td><%= @event.start_date %></td>
+	    </tr>
+	    <tr>
+	      <th scope="row">Lieu</th>
+	      <td><%= @event.location %></td>
+	    </tr>
+	    <tr>
+	      <th scope="row">Prix</th>
+	      <td><%= @event.price %>€</td>
+	    </tr>
+	    <tr>
+	      <th scope="row">Style(s)</th>
+	      <td><%= @event.style %></td>
+	    </tr>
+	    <tr>
+	      <th scope="row">Catégorie</th>
+	      <td><%= @event.category %></td>
+	    </tr>
+  		</tbody>
+	</table>
+</div>
