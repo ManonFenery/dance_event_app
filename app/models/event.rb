@@ -1,7 +1,4 @@
 class Event < ApplicationRecord
-  belongs_to :admin
-  has_many :attendances
-  has_many :dancers through: :attendances
 
   validates :start_date,
   presence: true
@@ -19,13 +16,13 @@ class Event < ApplicationRecord
   length: { minimum: 5, maximum: 1000 }
 
   validates :price,
-  presence: true
-  length: { greater_than: 0 }
+  presence: true,
+  numericality: { greater_than: 0 }
 
   validates :location,
   presence: true
 
-  validates :type,
+  validates :style,
   presence: true
 
   validates :category,
