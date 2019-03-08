@@ -1,25 +1,22 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Event Hip Hop</a>
+  <a class="navbar-brand" href="<%= root_path %>">Event Hip Hop</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="<%= root_path %>">Home</a>
+      <li class="nav-item">
+        <a class="nav-link" href="<%= new_user_session_path %>">Connexion</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="<%=  %>">Connexion</a>
+        <a class="nav-link" href="<%= new_user_registration_path %>">S'inscrire</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="<%=  %>">Créer Compte</a>
+        <a class="nav-link" href="<%= events_path %>">Trouver événements</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="<%= events_path %>">Liste événements</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="<%= new_event_path %>">Créer Un événement</a>
+        <a class="nav-link" href="<%= new_event_path %>">Créer événement</a>
       </li>
     </ul>
   </div>
