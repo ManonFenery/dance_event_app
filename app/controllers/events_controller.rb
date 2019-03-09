@@ -4,7 +4,7 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.create(title: params[:title], description: params[:description], start_date: params[:start_date], location: params[:location], duration: params[:duration], price: params[:price], type: params[:type], category: [:category])
+    @event = Event.create(title: params[:title], description: params[:description], start_date: params[:start_date], location: params[:location], duration: params[:duration], price: params[:price], style: params[:style], category: [:category])
 
     if @event.save
       redirect_to @event
@@ -46,6 +46,6 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:title, :description, :start_date, :location, :duration, :price, :type, :category)
+    params.require(:event).permit(:title, :description, :start_date, :location, :duration, :price, :style, :category)
   end
 end
