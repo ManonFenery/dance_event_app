@@ -10,17 +10,23 @@
         <a class="nav-link" href="<%= root_path %>">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="<%=  %>">Connexion</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="<%=  %>">Créer Compte</a>
-      </li>
-      <li class="nav-item">
         <a class="nav-link" href="<%= events_path %>">Liste événements</a>
       </li>
+      <% if user_signed_in? %>
       <li class="nav-item">
         <a class="nav-link" href="<%= new_event_path %>">Créer Un événement</a>
       </li>
+      <li class="nav-item">
+        <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, class: "nav-link text-primary mr-2" %>
+      </li>
+      <% else %>
+      <li class="nav-item">
+        <a class="nav-link" href="<%= new_user_session_path %>">Connexion</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="<%= new_user_registration_path %>">Créer Compte</a>
+      </li>
+      <% end %>
     </ul>
   </div>
 </nav>
