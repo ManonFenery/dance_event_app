@@ -7,9 +7,7 @@ class AttendancesController < ApplicationController
 	end
 
 	def create
-		@attendance = Attendance.create
-		@attendance.dancer = current_user
-		@attendance.event_id = params[:event_id]
+		@attendance = Attendance.create(dancer_id: current_user.id, event_id: params[:event_id])
 
 		if @attendance.save
 			redirect_to event_path(@attendance.event)
@@ -19,7 +17,8 @@ class AttendancesController < ApplicationController
 	end
 
 	def index
-		@attendances = Attendance.all
+		@attendances = Attendance.where("event_id = #{params[:event_id]}")
+		@event = Event.find(params[:event_id])
 	end
 
 	def show

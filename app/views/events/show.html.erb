@@ -39,9 +39,13 @@
 
 <div class="mx-auto py-3" style="width: 600px;">
   <% if current_user == @event.admin %>
-    <button type="button" class="btn"><%= link_to "Voir les participants", attendance_path(@event.id), class: "btn
+    <button type="button" class="btn"><%= link_to "Voir les participants", event_attendance_path(@event.id), class: "btn
           btn-lg btn-info" %></button>
+  <% elsif is_user_an_attendee? %>
+   	<p> Tu participes déjà à cet évènement :)</p>
    <% else %>
-   <%= render 'attendances/participate' %>
+   <button type="button" class="btn"><%= link_to "Je Participe", new_event_attendance_path(@event.id), class: "btn
+          btn-lg btn-info" %></button>
   <% end %>
 </div>
+
