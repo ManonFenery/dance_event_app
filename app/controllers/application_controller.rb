@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 			if current_user.admin?
 				devise_parameter_sanitizer.permit(:account_update, keys: [:name, :description, :contact_mail, :social, :website])
 			else
-    		devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :nickname, :birthdate, :style, :level])
+    			devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :nickname, :birthdate, :style, :level])
     	end
   	end
 end
