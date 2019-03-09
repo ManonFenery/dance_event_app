@@ -1,4 +1,7 @@
 class AttendancesController < ApplicationController
+
+	before_action :authenticate_user!, only: [:new, :create]
+
 	def new
 		@attendance = Attendance.new
 	end
@@ -11,7 +14,6 @@ class AttendancesController < ApplicationController
 		if @attendance.save
 			redirect_to event_path(@attendance.event)
 		else
-			flash[:error] = "Ta participation n'a pas été prise en compte. Réessaye de t'inscrire"
 			render 'new'
 		end
 	end
