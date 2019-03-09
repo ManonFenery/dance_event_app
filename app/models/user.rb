@@ -4,11 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :first_name, presence: true
-  validates :last_name, presence: true
-  validates :nickname, length: {minimum: 3, maximum: 150}
-  validates :birthdate, presence: true
-  validates :style, presence: true
-  validates :level, presence: true
+  has_many :events, foreign_key: 'admin_id', class_name: "Event"
+  has_many :attendances, foreign_key: 'dancer_id', class_name: "Attendance"
 
 end
