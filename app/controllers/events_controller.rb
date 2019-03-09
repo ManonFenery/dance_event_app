@@ -4,7 +4,8 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.create(title: params[:title], description: params[:description], start_date: params[:start_date], location: params[:location], duration: params[:duration], price: params[:price], style: params[:style], category: [:category])
+    @event = Event.create(title: params[:title], description: params[:description], start_date: params[:start_date], location: params[:location], duration: params[:duration], price: params[:price], style: params[:style], category: params[:category])
+    @event.admin = current_user
 
     if @event.save
       redirect_to @event
