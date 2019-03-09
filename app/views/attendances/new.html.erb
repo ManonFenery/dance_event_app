@@ -9,6 +9,9 @@
 </div>
 <% end %>
 
+
+<% if event_is_a_battle %>
+
 <div class="container">
     <div class="row">
       <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
@@ -18,7 +21,7 @@
             <h5 class="card-title text-center">Tu veux participer dans quel style ?</h5>
             <%= form_tag url_for(action: 'create'), method: "post", class: "form-signin" do %>
 
-
+            <%= select_tag "style", options_for_select([@event.style.to_s]) %>
 
       		<div class="form-group">
             	<%= submit_tag "Je participe", class: "btn btn-lg btn-primary btn-block" %>
@@ -29,3 +32,25 @@
     </div>
     <% end %>	
 </div>
+
+<% else %>
+
+<div class="container">
+    <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="card card-signin my-5">
+          <div class="card-body">
+            <h5 class="card-title text-center">Participer à l'évent</h5>
+            <%= form_tag url_for(action: 'create'), method: "post", class: "form-signin" do %>
+
+          <div class="form-group">
+              <%= submit_tag "Je participe", class: "btn btn-lg btn-primary btn-block" %>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %> 
+</div>
+
+<% end %>

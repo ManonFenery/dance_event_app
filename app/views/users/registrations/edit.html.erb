@@ -1,5 +1,61 @@
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
+<h3>Editer mon profil Danseur</h3>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.label :prénom %><br />
+    <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :nom %><br />
+    <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
+  </div>
+
+  
+  <div class="field">
+    <%= f.label :pseudo_danseur %><br />
+    <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :date_de_naissance %><br />
+    <%= f.date_field :birthdate, autofocus: true, autocomplete: "birthdate" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :styles_de_danse %><br />
+    <%= f.text_field :style, autofocus: true, autocomplete: "style" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :niveau_de_danse %><br />
+    <%= f.text_field :level, autofocus: true, autocomplete: "level" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+    <%= f.password_field :current_password, autocomplete: "current-password" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Update" %>
+  </div>
+<% end %>
+
+
+
+<h3>Editer mon profil Organisateur</h3>
+
+
+
+
+<h3>Editer mon profil Utilisateur</h3>
+
+
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 

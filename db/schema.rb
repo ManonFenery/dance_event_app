@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 2019_03_08_132657) do
   enable_extension "plpgsql"
 
   create_table "attendances", force: :cascade do |t|
+    t.string "style"
     t.bigint "dancer_id"
     t.bigint "event_id"
     t.datetime "created_at", null: false
