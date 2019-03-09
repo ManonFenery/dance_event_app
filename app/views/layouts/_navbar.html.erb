@@ -6,18 +6,21 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
+      <% if user_signed_in? %>
+      <li class="nav-item">
+        <a class="nav-link" href="<%= new_event_path %>">Créer Un événement</a>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, class: "nav-link text-primary mr-2" %>
+      </li>
+      <% else %>
       <li class="nav-item">
         <a class="nav-link" href="<%= new_user_session_path %>">Connexion</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="<%= new_user_registration_path %>">S'inscrire</a>
+        <a class="nav-link" href="<%= new_user_registration_path %>">Créer Compte</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="<%= events_path %>">Trouver événements</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="<%= new_event_path %>">Créer événement</a>
-      </li>
+      <% end %>
     </ul>
   </div>
 </nav>

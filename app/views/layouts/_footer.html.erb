@@ -5,21 +5,36 @@
         <h3 class="text-primary mb-3">Menu</h3>
         <nav class="nav flex-column">
           <a class="nav-link active" href="<%= root_path%>">Accueil</a>
+          <% if user_signed_in? %>
           <li class="nav-item">
             <a class="nav-link text-primary mr-2" href="<%= new_event_path %>">Créer un évenement</a>
           </li>
+          <% else %>
           <li class="nav-item">
             <a class="nav-link" href="<%= events_path %>">Liste événements</a>
           </li>
+          <% end %>
         </nav>
       </div>
 
       <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-5 mt-sm-0 text-sm-left">
         <h3 class="text-primary mb-3">Espace Membre</h3>
         <nav class="nav flex-column">
+        <% if user_signed_in? %>
           <li class="nav-item">
             <a class="nav-link text-primary mr-2" href="<%= %>">Mon Profil</a>
           </li>
+          <li class="nav-item">
+            <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, class: "nav-link text-primary mr-2" %>
+          </li>
+          <li class="nav-item">
+          <% else %>
+            <a class="nav-link text-primary mr-2" href="<%= %>">Connexion</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-primary mr-2" href="<%= %>">Créer un compte</a>
+          </li>
+          <% end %>
           <a class="nav-link" href="#">Support</a>
         </nav>
       </div>
