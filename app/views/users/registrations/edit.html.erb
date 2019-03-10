@@ -48,7 +48,48 @@
 
 
 
+
+
 <h3>Editer mon profil Organisateur</h3>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.label :nom_organisateur %><br />
+    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description_organisateur %><br />
+    <%= f.text_field :description, autofocus: true, autocomplete: "description" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :mail_de_contact %><br />
+    <%= f.email_field :contact_mail, autofocus: true, autocomplete: "contact_mail" %>
+  </div>
+
+    <div class="field">
+    <%= f.label :réseaux_sociaux %><br />
+    <%= f.text_field :social, autofocus: true, autocomplete: "social" %>
+  </div>
+
+    <div class="field">
+    <%= f.label :site %><br />
+    <%= f.text_field :website, autofocus: true, autocomplete: "website" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+    <%= f.password_field :current_password, autocomplete: "current-password" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Update" %>
+  </div>
+<% end %>
+
 
 
 

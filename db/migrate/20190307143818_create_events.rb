@@ -7,7 +7,7 @@ class CreateEvents < ActiveRecord::Migration[5.2]
       t.datetime :start_date
       t.integer :duration
       t.integer :price
-      t.string :style
+      t.string :styles, array: true, default: []
       t.string :category
       t.belongs_to :admin, index: true
       t.timestamps

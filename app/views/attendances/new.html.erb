@@ -21,7 +21,7 @@
             <h5 class="card-title text-center">Tu veux participer dans quel style ?</h5>
             <%= form_tag url_for(action: 'create'), method: "post", class: "form-signin" do %>
 
-            <%= select_tag "style", options_for_select([@event.style.to_s]) %>
+            <%= select_tag(:styles, options_for_select(@style_options)) %>
 
       		<div class="form-group">
             	<%= submit_tag "Je participe", class: "btn btn-lg btn-primary btn-block" %>

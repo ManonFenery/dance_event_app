@@ -10,7 +10,11 @@
 			    <p class="card-text mt-3 text-secondary"><%= event.start_date %></p>
 			    <p class="card-text text-secondary"><%= event.location %></p>
 			    <p class="card-text text-secondary"><%= event.price %>€</p>
-			    <p class="card-text text-secondary"><%= event.style %></p>
+			    <ul class="card-text text-secondary">
+			    	<% event.styles.each do |style| %>
+	      			<li><%= style %></li>
+	      			<% end %>
+	      		</ul>
 			    <p class="card-text text-secondary"><%= event.category %></p>
 			    <%= link_to "Voir l'événement", event_path(event.id), class: 'btn btn-primary' %>
 			  </div>

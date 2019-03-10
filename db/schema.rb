@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 2019_03_08_132657) do
     t.datetime "start_date"
     t.integer "duration"
     t.integer "price"
-    t.string "style"
+    t.string "styles", default: [], array: true
     t.string "category"
     t.bigint "admin_id"
     t.datetime "created_at", null: false

@@ -7,7 +7,7 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.create(title: params[:title], description: params[:description], start_date: params[:start_date], location: params[:location], duration: params[:duration], price: params[:price], style: params[:style], category: params[:category])
+    @event = Event.create(title: params[:title], description: params[:description], start_date: params[:start_date], location: params[:location], duration: params[:duration], price: params[:price], styles: params[:styles], category: params[:category])
     @event.admin = current_user
 
     if @event.save
@@ -50,6 +50,6 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:title, :description, :start_date, :location, :duration, :price, :style, :category)
+    params.require(:event).permit(:title, :description, :start_date, :location, :duration, :price, :styles, :category)
   end
 end

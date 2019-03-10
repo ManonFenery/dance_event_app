@@ -26,7 +26,7 @@ class Event < ApplicationRecord
   validates :location,
   presence: true
 
-  validates :style,
+  validates :styles,
   presence: true
 
   validates :category,

@@ -5,6 +5,8 @@ class AttendancesController < ApplicationController
 	def new
 		@attendance = Attendance.new
 		@event = Event.find(params[:event_id])
+		#To print all styles possible for the battle (select_tag)
+		@style_options = @event.styles.each{ |e| print e, "--" }
 	end
 
 	def create
