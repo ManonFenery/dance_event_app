@@ -11,7 +11,10 @@ class AddFieldsToUsers < ActiveRecord::Migration[5.2]
     add_column :users, :name, :string
     add_column :users, :description, :text
     add_column :users, :contact_mail, :string
-    add_column :users, :social, :string
+    add_column :users, :facebook, :string
+    add_column :users, :twitter, :string
+    add_column :users, :instagram, :string
+    add_column :users, :youtube, :string
     add_column :users, :website, :string
   end
 end

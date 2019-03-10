@@ -62,7 +62,7 @@
 
   <div class="field">
     <%= f.label :description_organisateur %><br />
-    <%= f.text_field :description, autofocus: true, autocomplete: "description" %>
+    <%= f.text_area :description, autofocus: true, autocomplete: "description" %>
   </div>
 
   <div class="field">
@@ -70,9 +70,24 @@
     <%= f.email_field :contact_mail, autofocus: true, autocomplete: "contact_mail" %>
   </div>
 
+  <div class="field">
+    <%= f.label :facebook %><br />
+    <%= f.text_field :facebook, autofocus: true, autocomplete: "facebook" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :twitter %><br />
+    <%= f.text_field :twitter, autofocus: true, autocomplete: "twitter" %>
+  </div>
+
     <div class="field">
-    <%= f.label :réseaux_sociaux %><br />
-    <%= f.text_field :social, autofocus: true, autocomplete: "social" %>
+    <%= f.label :instagram %><br />
+    <%= f.text_field :instagram, autofocus: true, autocomplete: "instagram" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :youtube %><br />
+    <%= f.text_field :youtube, autofocus: true, autocomplete: "youtube" %>
   </div>
 
     <div class="field">

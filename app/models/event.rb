@@ -31,4 +31,7 @@ class Event < ApplicationRecord
 
   validates :category,
   presence: true
+
+  STYLES_EVENT = ["Hip Hop New Style", "Break", "Popping", "Locking", "House", "Voguing", "Waacking"]
+  CATEGORIES_EVENT = ["Battle", "Cours / Workshop"]
 end

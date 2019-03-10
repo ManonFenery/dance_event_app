@@ -1,0 +1,34 @@
+<h2> Mon Profil Utilisateur</h2>
+<div>
+<%= @user.email %>
+</div>
+
+<div>
+	<h3>Mon Profil Danseur</h3>
+	<p><%= @user.first_name %>
+	<%= @user.last_name %></p>
+	<p><%= @user.nickname %></p>
+	<p><%= @user.birthdate %></p>
+	<p><%= @user.style %></p>
+	<p><%= @user.level %></p>
+</div>
+
+<div>
+	<h3>Mon Profil Organisateur</h3>
+	<p><%= @user.name %></p>
+	<p><%= @user.description %></p>
+	<p><%= @user.contact_mail %></p>
+	<p><%= link_to "Facebook", @user.facebook %></p>
+	<p><%= link_to "Twitter", @user.twitter %></p>
+	<p><%= link_to "Instagram", @user.instagram %></p>
+	<p><%= link_to "Youtube", @user.youtube %></p>
+	<p><%= link_to "Mon site", @user.website %></p>
+
+</div>
+
+
+<div>
+	<h4>Modifier mon profil</h4>
+<%= link_to "Editer mon profil", edit_user_registration_path %>
+</div>
+
