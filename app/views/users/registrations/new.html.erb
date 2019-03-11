@@ -1,29 +1,59 @@
-<h2>Sign up</h2>
+<div class="container d-flex align-items-center mt-5 mb-5">
+            <div class="col">
+                <div class="row justify-content-center">
+                    <div class="col-md-6 col-lg-5 col-xl-4">
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "users/shared/links" %>
+                        <div class="text-center mb-5">
+                            <h3 class="mb-3">Créer ton compte</h3>
+                            <h6 class="text-muted mb-0">Rejoins et créer facilement des événements de danse Hip Hop</h6>
+                        </div>
+                        <span class="clearfix"></span>
+                        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                        <%= render "devise/shared/error_messages", resource: resource %>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                    </div>
+                                        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", id:"input-email", placeholder: "email@exemple.com" %>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-key"></i></span>
+                                    </div>
+                                    <%= f.password_field :password, autocomplete: "new-password", class: "form-control", id:"input-password", placeholder: "Mot de passe" %>
+                                    <div class="input-group-append">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-key"></i></span>
+                                    </div>
+                                      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", id: "input-password-confirm", placeholder:"Confirmer mot de passe" %>
+                                </div>
+                            </div>
+                            <div class="my-4">
+                                <div class="custom-control custom-checkbox">
+                                    <input class="custom-control-input" id="customCheckRegister" type="checkbox">
+                                    <label class="custom-control-label" for="customCheckRegister">
+                                        <span>J'accepte <a href="#">les conditions d'utilisations</a>.</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="text-center mb-3">
+                                  <%= f.submit "Créer mon compte", class: "btn btn-block btn-primary mb-3 mb-sm-0" %>
+                            </div>
+                                <div class="text-center">
+                                    <span class="d-sm-block d-md-inline">Déjà enregistré?</span>
+                                    <%= render "users/shared/links"%>
+                                    <% end %>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
