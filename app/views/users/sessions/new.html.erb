@@ -1,26 +1,58 @@
-<h2>Log in</h2>
+<main>
+  <div class="container h-100vh d-flex align-items-center">
+    <div class="col">
+      <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-5 col-xl-4">
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+          <div class="text-center mb-5">
+            <h5 class="h3">Content de te revoir</h5>
+            <h6 class="text-muted mb-0">Connecte toi pour continuer</h6>
+          </div>
+          <span class="clearfix"></span>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <div class="form-group">
+              <label class="form-control-label">Mail</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-user"></i></span>
+                </div>
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "nom@exemple.com", id: "input-email", class: "form-control" %>
+              </div>
+            </div>
+            
+            <div class="form-group mb-4">
+                <div>
+                  <label class="form-control-label">Mot de Passe</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="fas fa-key"></i></span>
+                    </div>
+                    <%= f.password_field :password, autocomplete: "current-password", class: "form-control", id: "input-password", placeholder: "mot de passe" %>
+                  </div>
+                </div>
+            </div>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+            <div class="custom-control custom-checkbox mb-3">
+              <% if devise_mapping.rememberable? %>
+              <input type="checkbox" class="custom-control-input" id="customCheck1">
+              <%= f.check_box :remember_me, class: "custom-control-input", id: "customCheck1" %>
+              <label class="custom-control-label" for="customCheck1">Se souvenir de moi</label>
+              <% end %>
+            </div>
+            
+            <div class="text-center mb-3">
+              <%= f.submit "Connexion", class: "btn btn-block btn-primary" %>
+            </div>
+
+            <div class="text-center">
+              <small>Pas encore inscrit?</small>
+              <%= render "users/shared/links", class: "small font-weight-bold" %>
+            </div>
+          <% end %>
+
+        </div>
+      </div>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
-
-<%= render "users/shared/links" %>
+</main>
