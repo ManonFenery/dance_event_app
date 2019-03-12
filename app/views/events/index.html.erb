@@ -1,25 +1,37 @@
-<h2 class="text-center mt-5 mb-3">Liste des évenements</h2>
+<section class="slice slice-lg bg-primary bg-cover bg-size--cover">
+  <div class="container">
+    <div class="row row-grid">
+    	<div class="card-deck">
+    		<% @events.each do |event| %>
+    		<div class="col-lg-6">
+    			<%= link_to event_path(event.id), action: "go" do %>
+            <div class="card border-0 mb-4">
+            	<div class="card-image">
+                <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" class="img-fluid">
+            </div>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-2">
+                    <span class="d-block text-center text-uppercase text-warning"><%= event.start_date.strftime("%^b") %></span>
+                    <span class="d-block text-center h1 mb-0" style="font-family: 'Oswald', sans-serif;"><%= event.start_date.strftime("%d") %></span>
+                  </div>
+                  <div class="col-md-10 text-center text-md-left">
+                    <h3 class="h5 mb-0"><%= event.title %></h3>
+                    <p class="mb-0"><%= event.location %></p>
+                    <p class="mb-0"><%= event.price %>€</p>
+                    <span class="badge badge-pill badge-warning"><%= event.category %></span>
+                  </div>
+              </div>
+            </div>
+          </div>
+          <% end %>
+        </div>
+        <% end %>
+      </div>
+  </div>
+</section>
 
-<div class="container">
-	<div class="card-deck mb-4 mt-5 text-center">
-		<% @events.each do |event| %>
-		<div class="col-md-4">
-			<div class="card border-light bg-white rounded box-shadow mb-3" style="width: 18rem;">
-			  <div class="card-body">
-			    <h5 class="card-title mb-3"><%= event.title %></h5>
-			    <p class="card-text mt-3 text-secondary"><%= event.start_date %></p>
-			    <p class="card-text text-secondary"><%= event.location %></p>
-			    <p class="card-text text-secondary"><%= event.price %>€</p>
-			    <ul class="card-text text-secondary">
-			    	<% event.styles.each do |style| %>
-	      			<li><%= style %></li>
-	      			<% end %>
-	      		</ul>
-			    <p class="card-text text-secondary"><%= event.category %></p>
-			    <%= link_to "Voir l'événement", event_path(event.id), class: 'btn btn-primary' %>
-			  </div>
-			</div>
-		</div>
-		<% end %>
-	</div>
-</div>
+
+
+
+
