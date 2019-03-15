@@ -1,56 +1,59 @@
-<div class="container rounded box-shadow">
-  <div class="row">
-    <div class="col-sm-8">
-    	<img class="img-fluid" src="https://images.unsplash.com/photo-1438557068880-c5f474830377?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1506&q=80" alt="Image thumb">
-    </div>
-    <div class="col-sm-4 pt-5">
-    	<p><%= @event.start_date %></p>
-    	<h2><%= @event.title %></h2>
-    	<h3>Par : <%= @event.admin.name %></h3>
-    	<h4 class="pt-5"><%= @event.price %>€</h4>
-      <div class="pt-5">
-        <% if current_user == @event.admin %>
-          <button type="button" class="btn btn-block"><%= link_to "Voir les participants", event_attendance_path(@event.id), class: "btn btn-primary btn-lg btn-block" %></button>
-        <% elsif is_user_an_attendee? %>
-          <p> Tu participes déjà à cet évènement </p>
-        <% else %>
-          <button type="button" class="btn btn-block"><%= link_to "Participer", new_event_attendance_path(@event.id), class: "btn btn-primary btn-lg btn-block" %></button>
-        <% end %>
-      </div>
+<div class="container rounded box-shadow mt-5">
+  		<div class="row">
+    		<div class="col-sm-7">
+    			<img class="img-fluid rounded" src="https://images.unsplash.com/photo-1438557068880-c5f474830377?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1506&q=80" alt="Image thumb">
+    		</div>
+    		<div class="col-sm-5 pt-5">
+    			<p><%= @event.start_date %></p>
+    			<h3><%= @event.title %></h3>
+    			<h4>Par: <%= @event.admin.name %></h4>
+    			<p class="pt-5"><%= @event.price %>&nbsp;€</p>
+    			<span class="badge badge-pill badge-primary text-white mr-2"><%= @event.category %></span>
+    		</div>
+  		</div>
+			<div class="row bg-secondary rounded mt-3 mx-auto">
+				<div class="col-sm-4 mt-3 ml-2">
+					<i class="fas fa-share-alt fa-2x mt-2"></i>
+				</div>
+				<div class="col-sm-4 mt-3 ml-auto">
+					<% if current_user == @event.admin %>
+					<%= link_to "Voir les participants", event_attendance_path(@event.id), class: "btn
+				          btn-info btn-block mb-3" %></button>
+					<% elsif is_user_an_attendee? %>
+				   		<p> Tu participes déjà à cet évènement </p>
+					<% else %>
+				   	<%= link_to "Je Participe", new_event_attendance_path(@event.id), class: "btn
+				          btn-primary btn-block mb-3" %>
+					<% end %>
+				</div>
+  			</div>
 
-    </div>
-  </div>
+  		<div class="row mt-3">
+    		<div class="col-sm-8 my-3 px-5">
+    			<h4 class="mb-5">Description</h4>
+    			<p><%= @event.description %></p>
+    			<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
+    			<h4 class="mb-5 mt-5">Programme</h4>
+    			<p><strong>19h : </strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    			<p><strong>20h : </strong>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    			<p><strong>21h : </strong>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p> 
+    			<p><strong>22h : </strong>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
-  <div class="row">
-    <div class="col-sm-8 my-3 px-5">
-    	<h4>Description</h4>
-      <p><%= @event.description %></p>
-    	<h4>Style(s)</h4>
-      <ul>
-        <% @event.styles.each do |style| %>
-          <li><%= style %></li>
-        <% end %>
-      </ul>
-    	<h4 class="pt-4">Tags</h4>
-    	<span class="badge badge-md badge-pill badge-warning"><%= @event.category %></span>
-    </div>
-
-    <div class="col-sm-4 my-5">
-    	<h5>Date et Heure</h5>
-    	<p><%= @event.start_date.strftime("%A %d %B %Y") %></p>
-    	<p>08:30 – 17:00 heure</p>
-    	<h5 class="pt-5">Adresse</h5>
-      <p><%= @event.location_address %></p>
-    	<p>139 Rue de Bercy</p>
-    	<p>75012 Paris</p>
-    </div>
-  </div>
-</div>
-
-
-
-
-
-
+    			<h4 class="mb-3 mt-5">Tags</h4>
+    			<% @event.styles.each do |style| %>
+					<span class="badge badge-pill badge-primary text-white mr-2"><%= style %></span>
+				<% end %>
+    		</div>
+    		<div class="col-sm-4 my-4">
+    			<i class="fas fa-clock fa-2x mb-3"></i>
+    			<p>mar. 19 février 2019</p>
+    			<p>08:30 – 17:00 heure : France</p>
+    			<i class="fas fa-map-marked-alt fa-2x mb-3 mt-3"></i>
+    			<p>139 Rue de Bercy</p>
+    			<p>75012 Paris</p>
+    			<button class="btn btn-secondary btn-block text-white">Ajouter à mon calendrier</button>
+    		</div>
+  		</div>
+		</div>
 
