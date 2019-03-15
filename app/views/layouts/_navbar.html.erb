@@ -1,29 +1,41 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="<%= root_path %>">Event Hip Hop</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<nav class="navbar navbar-main navbar-expand-lg navbar-sticky navbar-dark bg-secondary" id="navbar-main">
+            <div class="container">
+                <a class="navbar-brand" href="<%= root_path %>">Event Hip Hop</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-main-collapse" aria-controls="navbar-main-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <% if user_signed_in? %>
-      <li class="nav-item">
-        <a class="nav-link text-primary mr-2" href="<%= new_event_path %>">Créer un événement</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="<%= user_path(current_user) %>">Mon Profil</a>
-      </li>
-      <li class="nav-item">
-        <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, class: "nav-link" %>
-      </li>
-      <% else %>
-      <li class="nav-item">
-        <a class="nav-link" href="<%= new_user_session_path %>">Connexion</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="<%= new_user_registration_path %>">Créer Compte</a>
-      </li>
-      <% end %>
-    </ul>
-  </div>
-</nav>
+                <div class="collapse navbar-collapse" id="navbar-main-collapse">
+                    <ul class="navbar-nav align-items-lg-center">
+                        <a class="nav-link text-primary mr-2" href="<%= root_path %>">Liste des événements</a>
+                        <% if user_signed_in? %>
+                          <li class="nav-item">
+                            <a class="nav-link" href="<%= user_path(current_user) %>">Mon Profil</a>
+                          </li>
+                        <% end %>
+                    </ul>
+
+                    <ul class="navbar-nav align-items-lg-center ml-lg-auto">
+                      <% if user_signed_in? %>
+                      <li class="nav-item">
+                          <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, class: "nav-link" %>
+                        </li>
+                          <li class="nav-item mr-0">
+                            <a href="<%= new_event_path %>" class="nav-link d-lg-none">Créer un événement</a>
+                            <a href="<%= new_event_path %>" target="_blank" class="btn btn-sm btn-white btn-icon d-none d-lg-inline-flex">
+                                <span class="btn-inner--icon"><i class="fas fa-plus"></i></span>
+                                <span class="btn-inner--text">Créer un événement</span>
+                            </a>
+                          </li>
+                        <% else %>
+                          <li class="nav-item">
+                            <a class="nav-link" href="<%= new_user_session_path %>">Connexion</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link btn btn-primary" href="<%= new_user_registration_path %>">Créer Compte</a>
+                          </li>
+                        <% end %>
+                    </ul>
+                </div>
+            </div>
+        </nav>
