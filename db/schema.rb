@@ -28,12 +28,17 @@ ActiveRecord::Schema.define(version: 2019_03_08_132657) do
   create_table "events", force: :cascade do |t|
     t.string "title"
     t.text "description"
-    t.string "location"
+    t.string "location_name"
+    t.string "location_address"
+    t.string "location_city"
+    t.string "location_zipcode"
+    t.string "location_country"
     t.datetime "start_date"
-    t.integer "duration"
     t.integer "price"
     t.string "styles", default: [], array: true
     t.string "category"
+    t.string "class_level"
+    t.string "class_teacher"
     t.bigint "admin_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

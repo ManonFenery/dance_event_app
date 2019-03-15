@@ -7,9 +7,20 @@ class Event < ApplicationRecord
   validates :start_date,
   presence: true
 
-  validates :duration,
-  presence: true,
-  numericality: { greater_than: 0 }
+  validates :location_address,
+  presence: true  
+
+  validates :location_city,
+  presence: true
+
+  validates :location_zipcode,
+  presence: true
+
+  validates :location_country,
+  presence: true
+
+  validates :location_city,
+  presence: true
 
   validates :title,
   presence: true,
@@ -23,8 +34,6 @@ class Event < ApplicationRecord
   presence: true,
   numericality: { greater_than: 0 }
 
-  validates :location,
-  presence: true
 
   validates :styles,
   presence: true
@@ -34,4 +43,6 @@ class Event < ApplicationRecord
 
   STYLES_EVENT = ["Hip Hop New Style", "Break", "Popping", "Locking", "House", "Voguing", "Waacking"]
   CATEGORIES_EVENT = ["Battle", "Cours / Workshop"]
+  CLASS_LEVELS_EVENT = ["Débutant", "Intermédiaire", "Avancé"]
 end
+
