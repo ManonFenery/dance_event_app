@@ -1,42 +1,169 @@
+<% if current_user == @event.admin %>
+
+
+<% if @event.errors.any? %>
+   <div class="alert alert-danger text-center" role="alert">
+ <p>Nous n'avons pas réussi à créer l'évenement' pour la (ou les) raison(s) suivante(s) :</p>
+ <ul>
+   <% @event.errors.full_messages.each do |message| %>
+     <li><%= message %></li>
+   <% end %>
+ </ul>
+</div>
+<% end %>
+
+
+
+
+<header class="header-account-page bg-gradient-primary d-flex align-items-center">
+  <div class="container">
+    <h2 class="text-white d-block">Modifier mon évènement</span>
+  </div>
+</header>
+
+
+<section class="slice">
 <div class="container">
-	<% if current_user == @event.admin %>
+
+<%= form_for @event do |f| %>
+
+  <div class="row">
+    <div class="col-md-8">
+
+      <div class="form-group">
+      <h5 class="mb-2">Titre</h5>
+        <%= f.text_field :title, class: "form-control", id: "inputTitle"  %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-md-6">
+
+      <div class="form-group">
+        <h5 class="mb-2">Lieu</h5>
+        <%= f.text_field :location_name, class: "form-control", id: "inputLocationName" %>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= f.text_field :location_address, class: "form-control", id: "inputLocationAddress" %>
+      </div>
+    </div>
+  </div>
+
+
     <div class="row">
-      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-        <div class="card card-signin my-5">
-          <div class="card-body">
-            <h5 class="card-title text-center">Modifier l'évenement</h5>
-
-            <%= form_for @event do |f| %>
-
-             <div class="form-label-group">
-              <%= f.text_field :title, class: "form-control", id: "inputTitle"  %>
-          </div>
-
-          <div class="form-label-group">
-                <%= f.text_field :description, class: "form-control", id: "inputDescription" %>
-              </div>
-
-          <div class="form-label-group">
-              <%= f.date_field :start_date, class: "form-control", id: "inputStart_date" %>
-          </div>
-
-          <div class="form-label-group">
-                <%= f.text_field :price, class: "form-control", id: "inputPrice"  %>
-              </div>
-
-          <div class="form-label-group">
-              <%= f.text_field :location_address, class: "form-control", id: "inputLocation" %>
-          </div>
-
+      <div class="col-md-2">
           <div class="form-group">
-              <%= f.submit "Modifier Évenement", class: "btn btn-lg btn-info btn-block text-uppercase" %>
-              <a href="<%= event_path(@event.id) %>" class= "btn btn-danger btn-block mt-3 text-uppercase" data-method="DELETE">Supprimer évenement</a>
+            <%= f.text_field :location_zipcode, class: "form-control", id: "inputLocationZipCode" %>
+          </div>
+      </div>
 
+      <div class="col-md-4">
+          <div class="form-group">
+            <%= f.text_field :location_city, class: "form-control", id: "inputLocationCity" %>
           </div>
-          </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+        <%= f.text_field :location_country, class: "form-control", id: "inputLocationCountry" %>
         </div>
       </div>
     </div>
-    	<% end %> 
-   <% end %>
+
+    <div class="row mt-3">
+      <div class="col-md-6">
+        <div class="form-group">
+          <h5 class="mb-2">Date et Heure</h5>
+          <%= f.datetime_field :start_date, class: "form-control", id: "inputStartDate" %>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row mt-3">
+      <div class="col-md-4">
+        <div class="form-group">
+          <h5 class="mb-2">Catégorie</h5>
+          <%= f.select :category, options_for_select(Event::CATEGORIES_EVENT, selected: @event.category), class: "form-control", id: "inputCategory" %>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row mt-3">
+      <div class="col-md-4">
+        <div class="form-group">
+          <h5 class="mb-2">Style(s)</h5>
+          <label class="form-label">Si tu organises un battle, précise bien chaque style en compétition</label>
+          <%= f.select :styles, options_for_select(Event::STYLES_EVENT, selected: @event.styles), multiple: true, class: "form-control", id: "inputStyle" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-md-4">
+        <div class="form-group">
+          <label class="form-label">A remplir seulement si tu organises un cours ou workshop</label>
+          <h5 class="mb-2">Niveau</h5>
+          <%= f.select :class_level, options_for_select(Event::CLASS_LEVELS_EVENT, selected: @event.class_level), class: "form-control", id: "inputClassLevel"  %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <h5 class="mb-2">Professeur</h5>
+          <%= f.text_field :class_teacher, class: "form-control", id: "inputClassTeacher" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-md-6">
+        <div class="form-group">
+          <h5 class="mb-2">Description</h5>
+          <%= f.text_area :description, class: "form-control", id: "inputDescription"  %>
+        </div>
+      </div>
+    </div>
+
+
+ 
+
+    <div class="row mt-3">
+      <div class="col-md-4">
+        <div class="form-group">
+          <h5 class="mb-2">Prix</h5>
+          <%= f.text_field :price, class: "form-control", id: "inputPrice"  %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-4">
+      <div class="col-md-4">
+        <div class="form-group">
+          <%= f.submit "Modifier Évenement", class: "btn btn-lg btn-primary" %>
+              <a href="<%= event_path(@event.id) %>" class= "btn btn-danger mt-3" data-method="DELETE">Supprimer évenement</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </div>
+
+
+<% end %> 
+</div>
+</section>
+
+<% end %>
