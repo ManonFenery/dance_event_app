@@ -14,6 +14,7 @@
             <a class="nav-link" href="<%= events_path %>">Liste événements</a>
           </li>
           <% end %>
+          <a class="nav-link" href="#">Support</a>
         </nav>
       </div>
 
@@ -22,20 +23,19 @@
         <nav class="nav flex-column">
         <% if user_signed_in? %>
           <li class="nav-item">
-            <a class="nav-link text-primary mr-2" href="<%= user_path(current_user) %>">Mon Profil</a>
+            <a class="nav-link text-primary mr-2" href="<%= user_path(current_user) %>">Profil</a>
           </li>
-          <li class="nav-item">
-            <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, class: "nav-link text-primary mr-2" %>
+          <li class="nav-item-disabled">
+            <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, class: "nav-link mr-2" %>
           </li>
           <li class="nav-item">
           <% else %>
-            <a class="nav-link text-primary font-weight-bold mr-2" href="<%= new_user_session_path %>">Connexion</a>
+            <a class="nav-link text-primary mr-2" href="<%= new_user_session_path %>">Connexion</a>
           </li>
           <li class="nav-item">
             <a class="nav-link text-primary font-weight-bold mr-2" href="<%= new_user_registration_path %>">Créer un compte</a>
           </li>
           <% end %>
-          <a class="nav-link" href="#">Support</a>
         </nav>
       </div>
 
