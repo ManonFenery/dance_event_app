@@ -1,4 +1,4 @@
-<nav class="navbar navbar-main navbar-expand-lg navbar-sticky navbar-dark" id="navbar-main">
+<nav class="navbar navbar-main navbar-expand-lg navbar-sticky navbar-light" id="navbar-main">
             <div class="container">
                 <a class="navbar-brand text-primary " href="<%= root_path %>">Event Hip Hop</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-main-collapse" aria-controls="navbar-main-collapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -7,32 +7,54 @@
 
                 <div class="collapse navbar-collapse" id="navbar-main-collapse">
                     <ul class="navbar-nav align-items-lg-center">
-                        <a class="nav-link  text-primary mr-2" href="<%= root_path %>">Liste des événements</a>
-                        <% if user_signed_in? %>
-                          <li class="nav-item">
-                            <a class="nav-link" href="<%= user_path(current_user) %>"><i class="far fa-user"></i>Mon Profil</a>
-                          </li>
-                        <% end %>
+                        <a class="nav-link  text-primary mr-2" href="<%= root_path %>">Parcourir les événements</a>
                     </ul>
-
                     <ul class="navbar-nav align-items-lg-center ml-lg-auto">
                       <% if user_signed_in? %>
-                      <li class="nav-item">
-                          <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, class: "nav-link" %>
+                        <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
+                            <a class="nav-link text-primary" href="<%= user_path(current_user) %>" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="far fa-user fa-lg"></i>Mon Profil</a>
+                            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-arrow py-0">
+                                <div class="list-group">
+                                  <a href="<%= new_event_path %>" class="list-group-item list-group-item-action">
+                                        <div class="media d-flex align-items-center">                                            
+                                            <div class="media-body ml-3">
+                                                <h6 class="mb-1 text-primary"><span><i class="fas fa-plus mr-2"></i></span>Créer un événement</h6>
+                                            </div>
+                                        </div>
+                                    </a>
+                                   <div class="line-separator"></div>
+
+                                  <a href="<%= user_path(current_user) %>" class="list-group-item list-group-item-action">
+                                        <div class="media d-flex align-items-center">                                            
+                                            <div class="media-body ml-3">
+                                                <h6 class="mb-1">Paramètres Organisateur</h6>
+                                            </div>
+                                        </div>
+                                    </a>                                    
+                                    <a href="<%= user_path(current_user) %>" class="list-group-item list-group-item-action">
+                                        <div class="media d-flex align-items-center">                                            
+                                            <div class="media-body ml-3">
+                                                <h6 class="mb-1">Profil</h6>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <div class="media d-flex align-items-center">
+                                      <div class="media-body ml-3">
+                                    <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "list-group-item list-group-item-action h6" %>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
                         </li>
-                          <li class="nav-item text-primary mr-0">
-                            <a href="<%= new_event_path %>" class="nav-link d-lg-none">Créer un événement</a>
-                            <a href="<%= new_event_path %>" target="_blank" class="btn btn-sm btn-white btn-icon d-none d-lg-inline-flex">
-                                <span class="btn-inner--icon"><i class="fas fa-plus"></i></span>
-                                <span class="btn-inner--text">Créer un événement</span>
-                            </a>
-                          </li>
                         <% else %>
                           <li class="nav-item">
-                            <a class="nav-link text-primary" href="<%= new_user_session_path %>">Connexion</a>
+                            <a class="nav-link btn btn-primary" href="<%= new_user_session_path %>"><i class="fas fa-plus"></i>Créer un événement</a>
                           </li>
                           <li class="nav-item">
-                            <a class="nav-link btn btn-primary" href="<%= new_user_registration_path %>">Créer Compte</a>
+                            <a class="nav-link text-secondary" href="<%= new_user_registration_path %>">Créer Compte</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link text-secondary" href="<%= new_user_session_path %>">Connexion</a>
                           </li>
                         <% end %>
                     </ul>
