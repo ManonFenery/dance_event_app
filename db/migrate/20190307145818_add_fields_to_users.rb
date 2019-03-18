@@ -5,7 +5,7 @@ class AddFieldsToUsers < ActiveRecord::Migration[5.2]
     add_column :users, :last_name, :string
     add_column :users, :nickname, :string
     add_column :users, :birthdate, :datetime
-    add_column :users, :style, :string
+    add_column :users, :styles, :string, array: true, default: []
     add_column :users, :level, :string
     #Admin
     add_column :users, :name, :string

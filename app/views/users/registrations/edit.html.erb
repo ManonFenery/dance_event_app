@@ -1,155 +1,230 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<header class="header-account-page bg-gradient-primary d-flex align-items-center">
+  <div class="container">
+    <h2 class="text-white d-block">Modifie ton profil</span>
+  </div>
+</header>
 
-<h3>Editer mon profil Danseur</h3>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+
+<section class="slice">
+<div class="container">
+
+
+  <h3>Editer mon profil Danseur</h3>
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :prénom %><br />
-    <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
-  </div>
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+        <h5 class="mb-2">Ton prénom</h5>
+          <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: "form-control" %>
+        </div>
+      </div>
 
-  <div class="field">
-    <%= f.label :nom %><br />
-    <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
-  </div>
+      <div class="col">
+        <div class="form-group">
+        <h5 class="mb-2">Ton nom</h5>
+          <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: "form-control" %>
+        </div>
+      </div>
+    </div>
 
-  
-  <div class="field">
-    <%= f.label :pseudo_danseur %><br />
-    <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname" %>
-  </div>
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+        <h5 class="mb-2">Ton pseudo de danseur</h5>
+          <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname", class: "form-control" %>
+        </div>
+      </div>
 
-  <div class="field">
-    <%= f.label :date_de_naissance %><br />
-    <%= f.date_field :birthdate, autofocus: true, autocomplete: "birthdate" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :styles_de_danse %><br />
-    <%= f.text_field :style, autofocus: true, autocomplete: "style" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :niveau_de_danse %><br />
-    <%= f.text_field :level, autofocus: true, autocomplete: "level" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
+      <div class="col">
+        <div class="form-group">
+        <h5 class="mb-2">Ta date de naissance</h5>
+          <%= f.date_field :birthdate, autofocus: true, autocomplete: "birthdate", class: "form-control" %>
+        </div>
+      </div>
+    </div>
 
 
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+        <h5 class="mb-2">Ton style de danse (tu peux en sélectionner plusieurs)</h5>
+          <%= f.select(:styles, options_for_select(User::STYLES_DANCER, selected: @user.styles), { include_hidden: false }, { multiple: true, class: "form-control" }) %>
+        </div>
+      </div>
 
+      <div class="col">
+        <div class="form-group">
+        <h5 class="mb-2">Ton niveau de danse</h5>
+          <%= f.select(:level, options_for_select(User::LEVELS_DANCER, selected: @user.level), {}, {class: "form-control" }) %>
+        </div>
+      </div>
+    </div>
 
+      <div class="form-group">
+      <h5 class="mb-2">Mot de passe actuel (we need your current password to confirm your changes)</h5>
+        <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control" %>
+      </div>
 
-<h3>Editer mon profil Organisateur</h3>
+      <div class="form-group">
+      <%= f.submit "Update", class: "btn btn-lg btn-primary" %>
+      </div>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :nom_organisateur %><br />
-    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :description_organisateur %><br />
-    <%= f.text_area :description, autofocus: true, autocomplete: "description" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :mail_de_contact %><br />
-    <%= f.email_field :contact_mail, autofocus: true, autocomplete: "contact_mail" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :facebook %><br />
-    <%= f.text_field :facebook, autofocus: true, autocomplete: "facebook" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :twitter %><br />
-    <%= f.text_field :twitter, autofocus: true, autocomplete: "twitter" %>
-  </div>
-
-    <div class="field">
-    <%= f.label :instagram %><br />
-    <%= f.text_field :instagram, autofocus: true, autocomplete: "instagram" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :youtube %><br />
-    <%= f.text_field :youtube, autofocus: true, autocomplete: "youtube" %>
-  </div>
-
-    <div class="field">
-    <%= f.label :site %><br />
-    <%= f.text_field :website, autofocus: true, autocomplete: "website" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-
-
-
-
-<h3>Editer mon profil Utilisateur</h3>
-
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+</div>
+</section>
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
 
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
 
-<h3>Cancel my account</h3>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+<section class="slice">
+<div class="container">
 
-<%= link_to "Back", :back %>
+
+  <h3>Editer mon profil Organisateur</h3>
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+
+      <div class="form-group">
+      <h5 class="mb-2">Nom en tant qu'organisateur</h5>
+        <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+      <h5 class="mb-2">Description</h5>
+        <%= f.text_area :description, autofocus: true, autocomplete: "description", class: "form-control" %>
+      </div>
+
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+        <h5 class="mb-2">Facebook</h5>
+          <%= f.text_field :facebook, autofocus: true, autocomplete: "facebook", class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="form-group">
+        <h5 class="mb-2">Twitter</h5>
+          <%= f.text_field :twitter, autofocus: true, autocomplete: "twitter", class: "form-control" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+        <h5 class="mb-2">Instagram</h5>
+          <%= f.text_field :instagram, autofocus: true, autocomplete: "instagram", class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="form-group">
+        <h5 class="mb-2">Youtube</h5>
+          <%= f.text_field :youtube, autofocus: true, autocomplete: "youtube", class: "form-control" %>
+        </div>
+      </div>
+    </div>
+
+      <div class="form-group">
+      <h5 class="mb-2">Site</h5>
+        <%= f.text_field :website, autofocus: true, autocomplete: "website", class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+      <h5 class="mb-2">Mail pour te contacter</h5>
+        <%= f.email_field :contact_mail, autofocus: true, autocomplete: "contact_mail", class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+      <h5 class="mb-2">Mot de passe actuel (we need your current password to confirm your changes)</h5>
+        <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+      <%= f.submit "Enregistrer les modifications", class: "btn btn-lg btn-primary" %>
+      </div>
+      
+  <% end %>
+
+
+</div>
+</section>
+
+
+
+
+
+
+<section class="slice">
+<div class="container">
+
+
+  <h3>Editer mon profil Utilisateur</h3>
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+
+      <div class="form-group">
+      <h5 class="mb-2">Email</h5>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+      </div>
+
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <% end %>
+
+      <div class="form-group">
+      <h5 class="mb-2">Nouveau mot de passe (laisse vide si tu ne veux pas le modifier)</h5>
+      <% if @minimum_password_length %>
+          <p><%= @minimum_password_length %> caractères minimum</p>
+        <% end %>
+        <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+      <h5 class="mb-2">Confirmation mot de passe</h5>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+      <h5 class="mb-2">Mot de passe actuel (we need your current password to confirm your changes)</h5>
+        <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+      <%= f.submit "Enregistrer les modifications", class: "btn btn-lg btn-primary" %>
+      </div>
+      
+  <% end %>
+
+
+</div>
+</section>
+
+
+
+<section class="slice">
+<div class="container">
+
+
+<h3>Supprimer mon compte</h3>
+
+<p>Unhappy?</p> 
+<%= button_to "Supprimer", registration_path(resource_name), data: { confirm: "Sûr de toi?" }, method: :delete, class: "btn btn-lg btn-danger" %>
+
+<%= link_to "Retour", :back %>
+
+
+</div>
+</section>
+
