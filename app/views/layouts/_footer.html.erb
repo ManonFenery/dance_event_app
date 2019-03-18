@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row align-items-top text-center">
       <div class="col-12 col-sm-6 col-md-4 col-lg-3 text-sm-left">
-        <h3 class="text-primary mb-3">Menu</h3>
+        <h3 class="text-primary text-uppercase mb-3">Menu</h3>
         <nav class="nav flex-column">
           <a class="nav-link active" href="<%= root_path%>">Accueil</a>
           <% if user_signed_in? %>
@@ -18,7 +18,7 @@
       </div>
 
       <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-5 mt-sm-0 text-sm-left">
-        <h3 class="text-primary mb-3">Espace Membre</h3>
+        <h3 class="text-primary text-uppercase mb-3">Espace Membre</h3>
         <nav class="nav flex-column">
         <% if user_signed_in? %>
           <li class="nav-item">
@@ -29,10 +29,10 @@
           </li>
           <li class="nav-item">
           <% else %>
-            <a class="nav-link text-primary mr-2" href="<%= new_user_session_path %>">Connexion</a>
+            <a class="nav-link text-primary font-weight-bold mr-2" href="<%= new_user_session_path %>">Connexion</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-primary mr-2" href="<%= new_user_registration_path %>">Créer un compte</a>
+            <a class="nav-link text-primary font-weight-bold mr-2" href="<%= new_user_registration_path %>">Créer un compte</a>
           </li>
           <% end %>
           <a class="nav-link" href="#">Support</a>
@@ -40,12 +40,12 @@
       </div>
 
       <div class="col-12 col-md-4 col-lg-3 text-md-left mt-5 mt-md-0">
-        <h3 class="text-primary mb-3">A Propos</h3>
-        <p class="text-primary">Loin, très loin dans une galaxie lointaine, deux aventuriers en quête de fun créerent la meilleur plateforme d'évenements</p>
+        <h3 class="text-primary text-uppercase mb-3">A Propos</h3>
+        <p>Loin, très loin dans une galaxie lointaine, deux aventuriers en quête de fun créerent la meilleur plateforme d'évenements</p>
       </div>
 
       <div class="col-12 col-lg-2 ml-auto text-lg-left mt-4 mt-lg-0">
-        <h3 class="text-primary mb-3">Réseaux Sociaux</h3>
+        <h3 class="text-primary text-uppercase mb-3">Réseaux Sociaux</h3>
         <p class="lead">
           <a href="#" class="mx-2"><i class="fab fa-instagram" aria-hidden="true"></i></a>
           <a href="#" class="mx-2"><i class="fab fa-youtube" aria-hidden="true"></i></a>

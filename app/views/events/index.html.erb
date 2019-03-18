@@ -1,37 +1,66 @@
-<section class="slice slice-lg bg-primary bg-cover bg-size--cover">
+<section class="slice slice-lg bg-gradient-primary">
+            <div class="container pt-lg">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10">
+                      <h2 class="text-white">Ne rate aucun événement de danse Hip Hop</h2>
+                        <form>
+                            <div class="form-group bg-white rounded px-2 py-2 shadow">
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <div class="input-group input-group-transparent shadow-none">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text border-0"><i class="fas fa-search"></i></span>
+                                            </div>
+                                            <input type="text" class="form-control border-0 shadow-none" placeholder="Cherche un événement">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5 text-right">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-primary btn-icon">
+                                                <span class="btn-inner--icon"><i class="fas fa-search"></i></span>
+                                                <span class="btn-inner--text">Rechercher</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+<section class="slice slice-lg">
   <div class="container">
     <div class="row row-grid">
     	<div class="card-deck">
     		<% @events.each do |event| %>
     		<div class="col-6 col-md-4">
     			<%= link_to event_path(event.id), action: "go" do %>
-            <div class="card border-0 mb-4">
+            <div class="card border mb-5">
             	<div class="card-img-top">
                 <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" class="img-fluid">
             </div>
               <div class="card-body">
                 <div class="row">
                   <div class="col-md-3">
-                    <span class="d-block text-center text-uppercase text-warning"><%= event.start_date.strftime("%^b") %></span>
+                    <span class="d-block text-center text-uppercase text-primary"><%= event.start_date.strftime("%^b") %></span>
                     <span class="d-block text-center h1 mb-0" style="font-family: 'Oswald', sans-serif;"><%= event.start_date.strftime("%d") %></span>
                   </div>
                   <div class="col-md-9 text-center text-md-left">
                     <h3 class="h5 mb-0"><%= event.title %></h3>
                     <p class="mb-0"><%= event.location_address %></p>
-                    <p class="mb-0"><%= event.price %>€</p>
-                    <span class="badge badge-pill badge-warning"><%= event.category %></span>
+                    <span class="badge badge-pill badge-primary"><%= event.category %></span>
                   </div>
               </div>
             </div>
           </div>
-          <% end %>
+            <% end %>
         </div>
         <% end %>
       </div>
   </div>
 </section>
-
-
 
 
 
