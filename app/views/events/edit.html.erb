@@ -104,7 +104,7 @@
         <div class="form-group">
           <h5 class="mb-2">Style(s)</h5>
           <label class="form-label">Si tu organises un battle, précise bien chaque style en compétition</label>
-          <%= f.select(:styles, options_for_select(Event::STYLES_EVENT, selected: @event.styles), {}, {multiple: true, class: "form-control", id: "inputStyle"}) %>
+          <%= f.select(:styles, options_for_select(Event::STYLES_EVENT, selected: @event.styles), { include_hidden: false }, {multiple: true, class: "form-control", id: "inputStyle"}) %>
         </div>
       </div>
     </div>
