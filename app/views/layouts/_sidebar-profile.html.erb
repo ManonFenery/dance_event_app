@@ -1,0 +1,38 @@
+<div class="col-lg-3 mt-3">
+                        <div data-toggle="sticky" data-sticky-offset="100" data-negative-margin=".card-profile-cover">
+                            <div class="card">
+                                <div class="card-header py-3">
+                                    <span class="h6">Paramètres</span>
+                                </div>
+                                <div class="list-group list-group-sm list-group-flush">
+                                    <a href="<%= user_path(current_user) %>" class="list-group-item list-group-item-action d-flex justify-content-between">
+                                        <div>
+                                            <i class="fas fa-user-circle mr-2"></i>
+                                            <span>Mon Profil</span>
+                                        </div>
+                                        <div>
+                                            <i class="fas fa-angle-right"></i>
+                                        </div>
+                                    </a>
+                                    <a href="<%= edit_user_registration_path %>" class="list-group-item list-group-item-action d-flex justify-content-between">
+                                        <div>
+                                            <i class="fas fa-cog mr-2"></i>
+                                            <span>Modifier mon profil</span>
+                                        </div>
+                                        <div>
+                                            <i class="fas fa-angle-right"></i>
+                                        </div>
+                                    </a>
+                                    <a href="account-settings.html" class="list-group-item list-group-item-action d-flex justify-content-between">
+                                        <div>
+                                            <i class="fas fa-calendar-check mr-2"></i>
+                                            <span>Mes Evénements</span>
+                                        </div>
+                                        <div>
+                                            <i class="fas fa-angle-right"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+</div>
