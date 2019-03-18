@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 2019_03_08_132657) do
     t.string "last_name"
     t.string "nickname"
     t.datetime "birthdate"
-    t.string "style"
+    t.string "styles", default: [], array: true
     t.string "level"
     t.string "name"
     t.text "description"
