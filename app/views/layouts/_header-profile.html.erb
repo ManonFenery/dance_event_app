@@ -10,6 +10,10 @@
                         </div>
                         <!-- Account navigation -->
                         <div class="d-flex">
+                            <a href="<%= user_path(current_user) %>" class="btn btn-icon btn-group-nav shadow btn-secondary">
+                                <span class="btn-inner--icon"><i class="fas fa-user"></i></span>
+                                <span class="btn-inner--text d-none d-md-inline-block">Mon Profil</span>
+                            </a>
                             <div class="btn-group btn-group-nav shadow ml-auto" role="group" aria-label="Basic example">
                                 <div class="btn-group" role="group">
                                     <button id="btn-group-boards" type="button" class="btn btn-secondary btn-icon">
@@ -18,10 +22,10 @@
                                     </button>
                                 </div>
                                 <div class="btn-group" role="group">
-                                    <a href="<%= user_path(current_user) %>">
+                                    <a href="<%= edit_user_registration_path %>">
                                     <button id="btn-group-settings" type="button" class="btn btn-secondary btn-icon">
-                                        <span class="btn-inner--icon"><i class="fas fa-user-circle mr-2"></i></span>
-                                        <span class="btn-inner--text d-none d-sm-inline-block">Mon Profil</span>
+                                        <span class="btn-inner--icon"><i class="fas fa-cog mr-2"></i></span>
+                                        <span class="btn-inner--text d-none d-sm-inline-block">Modifier mon profil</span>
                                     </button>
                                     </a>
                                 </div>
