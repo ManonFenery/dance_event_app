@@ -35,7 +35,7 @@
     <div class="row row-grid">
     	<div class="card-deck">
     		<% @events.each do |event| %>
-    		<div class="col-6 col-md-4">
+    		<div class="col-lg-4 col-md-6 col-sm-6">
     			<%= link_to event_path(event.id), action: "go" do %>
             <div class="card border mb-5">
             	<div class="card-img-top">
@@ -43,11 +43,11 @@
             </div>
               <div class="card-body">
                 <div class="row">
-                  <div class="col-md-3">
+                  <div class="col-md-4">
                     <span class="d-block text-center text-uppercase text-primary"><%= event.start_date.strftime("%^b") %></span>
-                    <span class="d-block text-center h1 mb-0" style="font-family: 'Oswald', sans-serif;"><%= event.start_date.strftime("%d") %></span>
+                    <span class="d-block text-center h2 mb-0" style="font-family: 'Oswald', sans-serif;"><%= event.start_date.strftime("%d") %></span>
                   </div>
-                  <div class="col-md-9 text-center text-md-left">
+                  <div class="col-md-7 text-center text-md-left">
                     <h3 class="h5 mb-0"><%= event.title %></h3>
                     <p class="mb-0"><%= event.location_address %></p>
                     <span class="badge badge-pill badge-primary"><%= event.category %></span>
