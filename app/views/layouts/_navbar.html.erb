@@ -1,18 +1,18 @@
-<nav class="navbar navbar-main navbar-expand-lg navbar-sticky navbar-light" id="navbar-main">
+<nav class="navbar navbar-main navbar-expand-lg navbar-sticky navbar-dark" id="navbar-main">
             <div class="container">
-                <a class="navbar-brand text-primary " href="<%= root_path %>">Event Hip Hop</a>
+                <a class="navbar-brand text-primary" href="<%= root_path %>">Event Hip Hop</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-main-collapse" aria-controls="navbar-main-collapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbar-main-collapse">
                     <ul class="navbar-nav align-items-lg-center">
-                        <a class="nav-link  text-primary mr-2" href="<%= root_path %>">Parcourir les événements</a>
+                        <a class="nav-link text-primary mr-2" href="<%= root_path %>">Parcourir les événements</a>
                     </ul>
                     <ul class="navbar-nav align-items-lg-center ml-lg-auto">
                       <% if user_signed_in? %>
                         <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
-                            <a class="nav-link text-primary" href="<%= user_path(current_user) %>" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="far fa-user fa-lg"></i>Mon Profil</a>
+                            <a class="nav-link text-primary" href="<%= user_path(current_user) %>" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-lg"></i></a>
                             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-arrow py-0">
                                 <div class="list-group">
                                   <a href="<%= new_event_path %>" class="list-group-item list-group-item-action">
@@ -40,7 +40,7 @@
                                     </a>
                                     <div class="media d-flex align-items-center">
                                       <div class="media-body ml-3">
-                                    <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "list-group-item list-group-item-action h6" %>
+                                        <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "list-group-item list-group-item-action h6" %>
                                     </div>
                                   </div>
                                 </div>
