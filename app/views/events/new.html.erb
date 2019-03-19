@@ -1,3 +1,5 @@
+<%= render "layouts/header-profile" %>
+
 <% if @event.errors.any? %>
    <div class="alert alert-danger text-center" role="alert">
  <p>Nous n'avons pas réussi à créer l'évenement' pour la (ou les) raison(s) suivante(s) :</p>
@@ -9,152 +11,145 @@
 </div>
 <% end %>
 
-
-<header class="header-account-page bg-gradient-primary d-flex align-items-center">
-  <div class="container">
-    <h2 class="text-white d-block">Crée ton évènement</span>
-  </div>
-</header>
-
-
 <section class="slice">
-<div class="container">
+  <div class="container">
+    <div class="row row-grid">
+      <%= render "layouts/sidebar-profile" %>
 
-<%= form_tag url_for(action: 'create'), method: "post", class: "form-signin" do %>
+    <div class="col-lg-8">
+        <%= form_tag url_for(action: 'create'), method: "post", class: "form-signin" do %>
 
-  <div class="row">
-    <div class="col-md-8">
-
-      <div class="form-group">
-      <h5 class="mb-2">Titre</h5>
-        <%= text_field_tag 'title', @title, class: "form-control", id: "inputTitle", placeholder: "Nom de l'évènement", :required => true  %>
-      </div>
-    </div>
-  </div>
-
-  <div class="row mt-3">
-    <div class="col-md-6">
-
-      <div class="form-group">
-        <h5 class="mb-2">Lieu</h5>
-        <%= text_field_tag 'location_name', @location_name, class: "form-control", id: "inputLocationName", placeholder: "Nom du lieu" %>
-      </div>
-    </div>
-  </div>
-
-
-  <div class="row">
-    <div class="col-md-6">
-      <div class="form-group">
-        <%= text_field_tag 'location_address', @location_address, class: "form-control", id: "inputLocationAddress", placeholder: "Adresse", :required => true %>
-      </div>
-    </div>
-  </div>
-
-
-    <div class="row">
-      <div class="col-md-2">
-          <div class="form-group">
-            <%= text_field_tag 'location_zipcode', @location_zipcode, class: "form-control", id: "inputLocationZipCode", placeholder: "Code Postal", :required => true %>
+          <div class="row">
+            <div class="col">
+              <div class="form-group">
+                <h5 class="mb-2">Titre</h5>
+                <%= text_field_tag 'title', @title, class: "form-control", id: "inputTitle", placeholder: "Nom de l'évènement", :required => true  %>
+              </div>
+            </div>
           </div>
-      </div>
 
-      <div class="col-md-4">
-          <div class="form-group">
-            <%= text_field_tag 'location_city', @location_city, class: "form-control", id: "inputLocationCity", placeholder: "Ville", :required => true %>
+          <div class="row mt-3">
+            <div class="col">
+              <div class="form-group">
+                <h5 class="mb-2">Lieu</h5>
+                <%= text_field_tag 'location_name', @location_name, class: "form-control", id: "inputLocationName", placeholder: "Nom du lieu" %>
+              </div>
+            </div>
           </div>
-      </div>
-    </div>
 
-    <div class="row">
-      <div class="col-md-6">
-        <div class="form-group">
-        <%= text_field_tag 'location_country', @location_country, class: "form-control", id: "inputLocationCountry", placeholder: "Pays", :required => true %>
+
+          <div class="row">
+            <div class="col">
+              <div class="form-group">
+                <%= text_field_tag 'location_address', @location_address, class: "form-control", id: "inputLocationAddress", placeholder: "Adresse", :required => true %>
+              </div>
+            </div>
+          </div>
+
+
+            <div class="row">
+              <div class="col">
+                  <div class="form-group">
+                    <%= text_field_tag 'location_zipcode', @location_zipcode, class: "form-control", id: "inputLocationZipCode", placeholder: "Code Postal", :required => true %>
+                  </div>
+              </div>
+
+              <div class="col">
+                  <div class="form-group">
+                    <%= text_field_tag 'location_city', @location_city, class: "form-control", id: "inputLocationCity", placeholder: "Ville", :required => true %>
+                  </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                <%= text_field_tag 'location_country', @location_country, class: "form-control", id: "inputLocationCountry", placeholder: "Pays", :required => true %>
+                </div>
+              </div>
+            </div>
+
+            <div class="row mt-3">
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <h5 class="mb-2">Date et Heure</h5>
+                  <%= datetime_field_tag 'start_date', @start_date, class: "form-control", id: "inputStartDate", :required => true %>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="row mt-3">
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <h5 class="mb-2">Catégorie</h5>
+                  <%= select_tag "category", options_for_select(Event::CATEGORIES_EVENT), class: "form-control", id: "inputCategory", prompt:"Catégorie", :required => true %>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="row mt-3">
+              <div class="col">
+                <div class="form-group">
+                  <h5 class="mb-2">Style(s)</h5>
+                  <label class="form-label text-warning font-weight-bold">Pour un battle, précise chaque style en compétition</label>
+                  <%= select_tag "styles", options_for_select(Event::STYLES_EVENT), multiple: true, class: "form-control", id: "inputStyle", :required => true %>
+                </div>
+              </div>
+            </div>
+
+            <div class="row mt-3">
+              <div class="col">
+                <div class="form-group">
+                  <label class="form-label text-warning font-weight-bold mb-3">A remplir si tu organises un cours ou workshop</label>
+                  <h5 class="mb-2">Niveau</h5>
+                  <%= select_tag 'class_level', options_for_select(Event::CLASS_LEVELS_EVENT), class: "form-control col-sm-4", id: "inputClassLevel", prompt: "Niveau"  %>
+                </div>
+              </div>
+            </div>
+
+            <div class="row mt-3">
+              <div class="col">
+                <div class="form-group">
+                  <h5 class="mb-2">Professeur</h5>
+                  <%= text_field_tag 'class_teacher', @class_teacher, class: "form-control", id: "inputClassTeacher", placeholder: "Nom du prof"  %>
+                </div>
+              </div>
+            </div>
+
+            <div class="row mt-3">
+              <div class="col">
+              	<div class="form-group">
+                  <h5 class="mb-2">Description</h5>
+                  <%= text_area_tag 'description', @description, class: "form-control", rows: "6", id: "inputDescription", placeholder: "Donne le plus de détails (programme, styles, prix, juges, djs, durée du cours, etc)", :required => true  %>
+                </div>
+              </div>
+            </div>
+
+            <div class="row mt-3">
+              <div class="col-sm-4">
+              	<div class="form-group">
+                  <h5 class="mb-2">Prix</h5>
+                  <%= text_field_tag 'price', @price, class: "form-control", id: "inputPrice", placeholder: "Prix à l'entrée", :required => true  %>
+                </div>
+              </div>
+            </div>
+
+            <div class="row mt-3">
+              <div class="col">
+              	<div class="form-group">
+                  <%= submit_tag "Créer mon évènement", class: "btn btn-md btn-primary" %>
+              	</div>
+              </div>
+            </div>
+
+          </div>
         </div>
+        <% end %>	
       </div>
     </div>
-
-    <div class="row mt-3">
-      <div class="col-md-6">
-        <div class="form-group">
-          <h5 class="mb-2">Date et Heure</h5>
-          <%= datetime_field_tag 'start_date', @start_date, class: "form-control", id: "inputStartDate", :required => true %>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="row mt-3">
-      <div class="col-md-4">
-        <div class="form-group">
-          <h5 class="mb-2">Catégorie</h5>
-          <%= select_tag "category", options_for_select(Event::CATEGORIES_EVENT), class: "form-control", id: "inputCategory", prompt:"Catégorie", :required => true %>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="row mt-3">
-      <div class="col-md-4">
-        <div class="form-group">
-          <h5 class="mb-2">Style(s)</h5>
-          <label class="form-label">Si tu organises un battle, précise bien chaque style en compétition</label>
-          <%= select_tag "styles", options_for_select(Event::STYLES_EVENT), multiple: true, class: "form-control", id: "inputStyle", :required => true %>
-        </div>
-      </div>
-    </div>
-
-    <div class="row mt-3">
-      <div class="col-md-4">
-        <div class="form-group">
-          <label class="form-label">A remplir seulement si tu organises un cours ou workshop</label>
-          <h5 class="mb-2">Niveau</h5>
-          <%= select_tag 'class_level', options_for_select(Event::CLASS_LEVELS_EVENT), class: "form-control", id: "inputClassLevel", prompt: "Niveau"  %>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-4">
-        <div class="form-group">
-          <h5 class="mb-2">Professeur</h5>
-          <%= text_field_tag 'class_teacher', @class_teacher, class: "form-control", id: "inputClassTeacher", placeholder: "Nom du prof"  %>
-        </div>
-      </div>
-    </div>
-
-    <div class="row mt-3">
-      <div class="col-md-6">
-      	<div class="form-group">
-          <h5 class="mb-2">Description</h5>
-          <%= text_area_tag 'description', @description, class: "form-control", rows: "6", id: "inputDescription", placeholder: "Donne le plus de détails (programme, styles, prix, juges, djs, durée du cours, etc)", :required => true  %>
-        </div>
-      </div>
-    </div>
-
-    <div class="row mt-3">
-      <div class="col-md-4">
-      	<div class="form-group">
-          <h5 class="mb-2">Prix</h5>
-          <%= text_field_tag 'price', @price, class: "form-control", id: "inputPrice", placeholder: "Prix à l'entrée", :required => true  %>
-        </div>
-      </div>
-    </div>
-
-    <div class="row mt-4">
-      <div class="col-md-4">
-      	<div class="form-group">
-          <%= submit_tag "Créer mon évènement", class: "btn btn-lg btn-primary" %>
-      	</div>
-      </div>
-    </div>
-
   </div>
-</div>
-
-
-<% end %>	
-</div>
 </section>
 
 

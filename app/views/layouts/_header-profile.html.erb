@@ -5,11 +5,11 @@
                         <!-- Salute + Small stats -->
                         <div class="row align-items-center mb-4">
                             <div class="col-md-5 mb-4 mb-md-0">
-                                <span class="h2 mb-0 text-white d-block">Bonjour <%= @user.first_name %></span>
+                                <span class="h2 mb-0 text-white d-block">Bonjour <%= @user&.first_name %></span>
                             </div>                           
                         </div>
                         <!-- Account navigation -->
-                        <div class="d-flex">
+                        <div class="d-none d-sm-flex d-print-flex">
                             <a href="<%= user_path(current_user) %>" class="btn btn-icon btn-group-nav shadow btn-secondary">
                                 <span class="btn-inner--icon"><i class="fas fa-user"></i></span>
                                 <span class="btn-inner--text d-none d-md-inline-block">Mon Profil</span>
