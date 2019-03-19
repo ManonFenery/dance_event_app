@@ -13,7 +13,7 @@
     			<p><%= @event.price %>&nbsp;€</p>
 
 					<% if current_user == @event.admin %>
-					<%= link_to "Voir les participants", event_attendance_path(@event.id), class: "btn
+					<%= link_to "Voir les participants", event_attendances_path(@event.id), class: "btn
 				          btn-info btn-block" %></button>
 					<% elsif is_user_an_attendee? %>
 				   		<p> Tu participes déjà à cet évènement </p>

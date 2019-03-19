@@ -47,7 +47,7 @@
                                 </div>
                                 <div class="col-md-6">
                                 	<h5>Date d'anniversaire</h5>
-                                	<p><%= @user.birthdate.strftime("%d / %m / %Y") %></p>
+                                	<p><%= @user&.birthdate&.strftime("%d / %m / %Y") %></p>
                                 </div>
                             </div>
                             <div class="row">
