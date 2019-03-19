@@ -1,0 +1,44 @@
+<h2>Dashboard</h2>
+
+<p><%= @user.email %></p>
+<%= link_to "Mon Profil", user_path(current_user), class: "btn btn-info" %>
+
+<h3>Events créés</h3>
+<p><%= @user.events.count %> events au total</p>
+
+
+<% @user.events.each do |event| %>
+<ul>
+  <li><%= event.title %></li>
+  <li><%= event.start_date.strftime("%A %e %B %Y") %></li>
+  <% if event.start_date < DateTime.now %>
+<li>Event fini</li>
+<% else %>
+<li>Event pas encore passé</li>
+<% end %>
+  <li><%= event.attendances.count %> participants</li>
+  <li><%= link_to "Lien event", event_path(event.id) %></li>
+  </ul>
+<% end %>
+
+
+<%= link_to "Créer nouvel event", new_event_path, class: "btn btn-info" %>
+
+
+<h3>Participations</h3>
+<p><%= @user.attendances.count %> partipations au total</p>
+
+
+<% @user.attendances.each do |attendance| %>
+<ul>
+  <li><%= attendance.event.title %></li>
+  <li><%= attendance.event.start_date.strftime("%A %e %B %Y") %></li>
+  <% if attendance.event.start_date < DateTime.now %>
+<li>Event fini</li>
+<% else %>
+<li>Event pas encore passé</li>
+<% end %>
+  <li><%= link_to "Lien event", event_path(attendance.event.id) %></li>
+  </ul>
+<% end %>
+
