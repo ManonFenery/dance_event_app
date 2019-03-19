@@ -1,13 +1,12 @@
 <%= render "layouts/header-profile" %>
 
-                <section class="slice">
-            <div class="container">
-                <div class="row row-grid">
-                    <%= render "layouts/sidebar-profile" %>
+    <section class="slice">
+        <div class="container">
+            <div class="row row-grid">
+                <%= render "layouts/sidebar-profile" %>
                     
-                    <div class="col-lg-9">
+                    <div class="col-lg-9 mt-3">
                         <!-- Change avatar -->
-
                         <div class="card bg-gradient-warning border-0 shadow mb-4">
                             <div class="card-body py-3">
                                 <div class="row row-grid align-items-center">
@@ -28,7 +27,7 @@
 
                             <!-- General -->
                             <div class="page-inner-header mb-4">
-                                <h3 class="mb-1">Profil Danseur</h5>
+                                <h3 class="mb-1">Profil Danseur</h3>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
@@ -63,7 +62,7 @@
                                 </div>
                             </div>
 
-                            <div class="pt-5 mt-5 delimiter-top">
+                            <div class="pt-5 mt-5 delimiter-top"></div>
 
                                 <div class="page-inner-header mb-4">
                                     <h3 class="mb-1">Profil Organisateur</h3>
@@ -113,12 +112,11 @@
                                         <a href="<%= @user.website %>"><i class="fas fa-link", style="color:#000000;"></i>&nbsp;Site Internet</a>
                                     </div>
                                 </div>
-                            </div>
 
                             <div class="pt-5 mt-5 delimiter-top">
                                 <a href="<%= edit_user_registration_path %>"><button class="btn btn-sm btn-primary"><i class="fas fa-cog mr-2"></i>Modifier mon profil</button></a>
                             </div>                      
                     </div>
-                </div>
             </div>
-        </section>
+        </div>
+    </section>
