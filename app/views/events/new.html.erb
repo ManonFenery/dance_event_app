@@ -17,7 +17,7 @@
       <%= render "layouts/sidebar-profile" %>
 
     <div class="col-lg-8">
-        <%= form_tag url_for(action: 'create'), method: "post", class: "form-signin" do %>
+        <%= form_tag url_for(action: "create"), method: "post", multipart: true, class: "form-signin" do %>
 
           <div class="row">
             <div class="col">
@@ -127,6 +127,36 @@
               </div>
             </div>
 
+<% 
+=begin %>
+            <div class="row mt-3">
+              <div class="col">
+                <div class="form-group">
+                  <h5 class="mb-2">Image de l'évènement</h5>
+                  <input type="file" class="custom-input-file" />
+                  <label for="file-picture">
+                    <i class="fa fa-upload"></i>
+                    <span>Choisis une image</span>
+                    </label>
+                  <%= file_field_tag 'picture', :required => true, id: "file-picture"  %>
+                </div>
+              </div>
+            </div> 
+<%
+=end %>
+
+
+          <div class="row mt-3">
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <h5 class="mb-2">Image</h5>
+                  <%= file_field_tag 'picture', :required => true  %>
+                </div>
+              </div>
+            </div>
+
+
+
             <div class="row mt-3">
               <div class="col-sm-4">
               	<div class="form-group">
@@ -151,7 +181,6 @@
     </div>
   </div>
 </section>
-
 
 
 

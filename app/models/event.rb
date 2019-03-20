@@ -4,7 +4,7 @@ class Event < ApplicationRecord
   has_many :attendances
   has_many :dancers, class_name: "User", through: :attendances
 
-  has_one_attached :event_picture
+  has_one_attached :picture
 
   validates :start_date,
   presence: true
